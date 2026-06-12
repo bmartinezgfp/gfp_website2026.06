@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Growth Finance Partners | Fractional CFO & Financial Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKEN SYSTEM ──────────────────────────────────────── */
+  :root {
+    --navy:      #0D1B2A;
+    --steel:     #1E3A52;
+    --brass:     #B8924A;
+    --brass-lt:  #D4A96A;
+    --chalk:     #F5F3EE;
+    --white:     #FFFFFF;
+    --mid:       #7A8A96;
+    --rule:      #D0CCC4;
+
+    --display:   'Cormorant Garamond', serif;
+    --body:      'DM Sans', sans-serif;
+    --mono:      'DM Mono', monospace;
+  }
+
+  /* ── RESET ─────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    background: var(--chalk);
+    color: var(--navy);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ────────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,146,74,0.2);
+  }
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .nav-logo span { color: var(--brass); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--brass-lt); }
+  .nav-cta {
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brass);
+    border: 1px solid var(--brass);
+    padding: 9px 20px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--brass); color: var(--navy); }
+
+  /* ── HERO ───────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 64px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 28px;
+  }
+  .hero-headline {
+    font-family: var(--display);
+    font-size: clamp(3.2rem, 6vw, 5.6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--brass-lt);
+  }
+  .hero-sub {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 48px;
+    line-height: 1.3;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 400px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    background: var(--brass);
+    color: var(--navy);
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--brass-lt); }
+  .btn-ghost {
+    color: rgba(255,255,255,0.6);
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--white); border-color: var(--white); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--navy) 0%, transparent 30%);
+    z-index: 1;
+  }
+  .hero-right img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: grayscale(30%);
+  }
+  /* decorative vertical text */
+  .hero-vertical {
+    position: absolute;
+    right: 40px; bottom: 80px;
+    writing-mode: vertical-rl;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(184,146,74,0.5);
+    z-index: 2;
+  }
+
+  /* ticker */
+  .ticker-wrap {
+    background: var(--brass);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 28s linear infinite;
+  }
+  .ticker-inner span {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding: 0 40px;
+  }
+  .ticker-inner span::before {
+    content: '◆ ';
+    opacity: 0.5;
+  }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── METHODOLOGY ────────────────────────────────────────── */
+  .methodology {
+    background: var(--chalk);
+    padding: 120px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .method-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 20px;
+  }
+  .method-headline {
+    font-family: var(--display);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .method-tagline {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 32px;
+  }
+  .method-tagline span { color: var(--brass); }
+  .method-body {
+    font-size: 0.95rem;
+    color: #3D4F5C;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+  .method-body strong { color: var(--navy); font-weight: 600; }
+  .method-right { display: flex; flex-direction: column; gap: 24px; }
+  .method-pillar {
+    border-left: 2px solid var(--brass);
+    padding: 20px 28px;
+    background: var(--white);
+  }
+  .method-pillar h4 {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 8px;
+  }
+  .method-pillar p {
+    font-size: 0.88rem;
+    color: #3D4F5C;
+    line-height: 1.65;
+  }
+
+  /* ── SERVICES ───────────────────────────────────────────── */
+  .services {
+    background: var(--navy);
+    padding: 120px 80px;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 32px;
+  }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 12px;
+  }
+  .section-title-lg {
+    font-family: var(--display);
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .section-link {
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brass);
+    border-bottom: 1px solid var(--brass);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .section-link:hover { opacity: 0.7; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    background: rgba(255,255,255,0.04);
+    padding: 48px 40px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.25s, border-color 0.25s;
+    cursor: default;
+  }
+  .service-card:hover {
+    background: rgba(184,146,74,0.08);
+    border-color: rgba(184,146,74,0.3);
+  }
+  .service-icon {
+    width: 40px; height: 40px;
+    margin-bottom: 28px;
+    opacity: 0.7;
+  }
+  .service-card h3 {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .service-card .tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 20px;
+  }
+  .service-card p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.75;
+  }
+  .service-list {
+    list-style: none;
+    margin-top: 20px;
+  }
+  .service-list li {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .service-list li::before {
+    content: '—';
+    color: var(--brass);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── ABOUT STRIP ────────────────────────────────────────── */
+  .about-strip {
+    background: var(--chalk);
+    padding: 120px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-img {
+    position: relative;
+  }
+  .about-img img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    filter: grayscale(20%);
+  }
+  .about-img-badge {
+    position: absolute;
+    bottom: -24px; right: -24px;
+    background: var(--brass);
+    padding: 28px 32px;
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.3;
+    max-width: 200px;
+  }
+  .about-content { padding-left: 20px; }
+  .about-content .method-body { margin-bottom: 40px; }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+  .stat { border-top: 2px solid var(--brass); padding-top: 20px; }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* ── VALUES ─────────────────────────────────────────────── */
+  .values {
+    background: var(--white);
+    padding: 120px 80px;
+  }
+  .values-header { text-align: center; margin-bottom: 80px; }
+  .values-header .method-label { justify-content: center; display: block; }
+  .values-header .method-headline { font-size: clamp(2rem, 3vw, 3rem); }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 64px;
+  }
+  .value-item {}
+  .value-num {
+    font-family: var(--display);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .value-item h4 {
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 14px;
+  }
+  .value-item p {
+    font-size: 0.88rem;
+    color: #3D4F5C;
+    line-height: 1.75;
+  }
+
+  /* ── CTA BAND ───────────────────────────────────────────── */
+  .cta-band {
+    background: var(--navy);
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+    border-top: 2px solid var(--brass);
+  }
+  .cta-band h2 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .cta-band h2 em { font-style: italic; color: var(--brass-lt); }
+  .cta-band p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 16px;
+    max-width: 560px;
+  }
+  .cta-side { flex-shrink: 0; }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  footer {
+    background: #070E16;
+    padding: 64px 80px 40px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+  .footer-brand .nav-logo { font-size: 1.2rem; margin-bottom: 16px; display: block; }
+  .footer-brand p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    max-width: 260px;
+  }
+  .footer-col h5 {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 20px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+  }
+  .footer-bottom a {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+    transition: color 0.2s;
+  }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+  /* ── SVG ICONS ──────────────────────────────────────────── */
+  .icon { width: 36px; height: 36px; stroke: var(--brass); fill: none; stroke-width: 1.5; }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 28px; }
+    .nav-links { gap: 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 120px 40px 80px; }
+    .hero-right { display: none; }
+    .methodology, .about-strip { grid-template-columns: 1fr; gap: 48px; padding: 80px 40px; }
+    .services { padding: 80px 40px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .values { padding: 80px 40px; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .cta-band { grid-template-columns: 1fr; padding: 80px 40px; }
+    footer { padding: 48px 40px 32px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero-left { padding: 100px 24px 60px; }
+    .methodology, .about-strip, .services, .values { padding: 64px 24px; }
+    .services-grid, .values-grid { grid-template-columns: 1fr; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .cta-band { padding: 64px 24px; }
+    footer { padding: 48px 24px 28px; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">GROWTH<span>.</span><br>FINANCE PARTNERS</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#values">Our Values</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Fractional CFO · Government Contracting · Financial Advisory</div>
+    <h1 class="hero-headline">
+      Precision<br>
+      Financial<br>
+      <em>Leadership</em>
+    </h1>
+    <p class="hero-sub">Built for complexity.<br>Scaled to your mission.</p>
+    <p class="hero-desc">
+      GFP brings fractional CFO expertise and full-stack accounting services to organizations navigating growth, government contracting compliance, audits, and high-stakes financial operations — without the full-time overhead.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#about" class="btn-ghost">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Modern office building" />
+    <div class="hero-vertical">Growth Finance Partners</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>Fractional CFO</span>
+    <span>Full-stack Accounting Team</span>
+    <span>Accounting Tech Stack Management</span>
+    <span>FAR / DFARS Compliance</span>
+    <span>DCAA Audit Support</span>
+    <span>Incurred Cost Submissions</span>
+    <span>GAAP Compliance</span>
+    <span>Indirect Rate Strategy</span>
+    <span>Government Contract Advisory</span>
+    <span>Financial Close Services</span>
+    <!-- duplicate for seamless loop -->
+    <span>Fractional CFO</span>
+    <span>Full-stack Accounting Team</span>
+    <span>Accounting Tech Stack Management</span>
+    <span>FAR / DFARS Compliance</span>
+    <span>DCAA Audit Support</span>
+    <span>Incurred Cost Submissions</span>
+    <span>GAAP Compliance</span>
+    <span>Indirect Rate Strategy</span>
+    <span>Government Contract Advisory</span>
+    <span>Financial Close Services</span>
+  </div>
+</div>
+
+<!-- METHODOLOGY -->
+<section class="methodology" id="about">
+  <div class="method-left">
+    <div class="method-label">Our Approach</div>
+    <h2 class="method-headline">Disciplined<br>Financial<br>Clarity</h2>
+    <div class="method-tagline"><span>Compliance</span> · <span>Precision</span> · <span>Strategy</span></div>
+    <p class="method-body">
+      Accounting infrastructure <strong>built around your strategy, pace, and requirements</strong> — we deliver deciplined technical accounting with strategic finanical guidance to help you navigate growth and turn complexity into clarity for confident decisions.
+    </p>
+    <p class="method-body">
+      Government contracting accounting demands more than competent bookkeeping — it requires <strong>audit-defensible cost structures, airtight indirect rate methodologies, and strategic financial leadership</strong> that translates compliance requirements into operational advantage.
+    </p>
+    <p class="method-body">
+      GFP embeds directly into your finance function, operating as a true fractional partner — not an advisor on the sidelines. We build-out and integrate accounting systems, documentation, and processes that hold up under scrutiny and drive growth.
+    </p>
+    <a href="#services" class="btn-primary" style="display:inline-block; margin-top:8px;">See How We Work</a>
+  </div>
+  <div class="method-right">
+    <div class="method-pillar">
+      <h4>Compliance-First Foundation</h4>
+      <p>Every financial system we build is designed to withstand DCAA examination — from labor distribution and timekeeping controls to unallowable cost segregation and ICS preparation.</p>
+    </div>
+    <div class="method-pillar">
+      <h4>Fractional Depth, Not Bandwidth</h4>
+      <p>You get a senior-level CFO embedded in your operations, not a consultant who shows up quarterly. We own deliverables, manage closes, and sit in the room where decisions are made.</p>
+    </div>
+    <div class="method-pillar">
+      <h4>Scalable Financial Architecture</h4>
+      <p>From indirect cost pool structure to chart of accounts design and accounting software configuration — we build financial infrastructure that scales with contract awards and headcount.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">What We Do</div>
+      <div class="section-title-lg">Our Services</div>
+    </div>
+    <a href="#contact" class="section-link">Discuss Your Needs →</a>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <h3>Fractional CFO Leadership</h3>
+      <div class="tag">Strategic · Embedded · Senior-Level</div>
+      <p>Dedicated CFO partnership for companies that need executive-level financial leadership without a full-time hire. We drive strategy, own reporting, and lead your finance function end-to-end.</p>
+      <ul class="service-list">
+        <li>Board &amp; investor reporting</li>
+        <li>Cash flow &amp; forecasting models</li>
+        <li>Audit &amp; banking relationships</li>
+        <li>Finance team buildout &amp; oversight</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <h3>Government Contracting Compliance</h3>
+      <div class="tag">FAR · DCAA · DCMA · ICS</div>
+      <p>Comprehensive support for contractors navigating the complex regulatory landscape of federal cost accounting — from forward pricing to post-award audits.</p>
+      <ul class="service-list">
+        <li>FAR Part 31 cost allowability</li>
+        <li>Indirect rate structure &amp; proposal</li>
+        <li>Incurred Cost Submission (ICS)</li>
+        <li>DCAA audit support &amp; response</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <h3>Accounting &amp; Financial Close</h3>
+      <div class="tag">Monthly Close · Reconciliations · Reporting</div>
+      <p>Rigorous monthly and quarterly close services built around your industry's standards — GAAP-compliant, audit-ready, and delivered on time every time.</p>
+      <ul class="service-list">
+        <li>Monthly close &amp; financial statements</li>
+        <li>ASC 842 lease accounting</li>
+        <li>Chart of accounts design (QBO/QBD)</li>
+        <li>Journal entry documentation &amp; memos</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <h3>Payroll &amp; HR Compliance</h3>
+      <div class="tag">Multi-State · S-Corp · Benefits</div>
+      <p>End-to-end payroll architecture and HR compliance for growing businesses — including S-Corp shareholder compensation, accountable plans, and multi-state payroll setup.</p>
+      <ul class="service-list">
+        <li>Gusto / OnPay platform setup</li>
+        <li>Accountable plan structuring</li>
+        <li>Multi-state registration (SUI, FAMLI)</li>
+        <li>W-2 / 941 reconciliation &amp; corrections</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <svg class="icon" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <h3>Financial Modeling &amp; Analysis</h3>
+      <div class="tag">Forecasting · Scenarios · Decisions</div>
+      <p>Purpose-built models that illuminate the financial path forward — from contract pricing and indirect rate projections to M&amp;A readiness and scenario planning.</p>
+      <ul class="service-list">
+        <li>T&amp;M / CPFF contract financial models</li>
+        <li>Indirect rate forward pricing</li>
+        <li>Operating budget &amp; variance analysis</li>
+        <li>Business valuation support</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <h3>Advisory &amp; Custom Engagements</h3>
+      <div class="tag">Project-Based · High-Impact · Specialized</div>
+      <p>Targeted engagements for specific financial inflection points — when you need senior expertise fast on a discrete problem or transaction.</p>
+      <ul class="service-list">
+        <li>DCMA / DCAA documentation responses</li>
+        <li>Technical accounting memos</li>
+        <li>Accounting software migration</li>
+        <li>CFO coaching for controllers</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip" id="expertise">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Professional advisory" />
+    <div class="about-img-badge">Trusted by government contractors &amp; growth-stage companies</div>
+  </div>
+  <div class="about-content">
+    <div class="method-label">Why GFP</div>
+    <h2 class="method-headline">Senior Expertise.<br>Right-Sized Engagement.</h2>
+    <p class="method-body" style="margin-top:20px;">
+      The government contracting finance landscape is uniquely demanding. Most fractional advisors lack the depth to navigate FAR Part 31 cost principles, DCAA audit interfaces, and indirect rate negotiations simultaneously — while also keeping the books clean and the monthly close on schedule.
+    </p>
+    <p class="method-body">
+      GFP was built for exactly this complexity. We bring the full financial stack — CFO strategy, controller-level execution, and accounting precision — in a scalable, fractional model that fits how your business actually operates.
+    </p>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years in Govt. Contracting Finance</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">DCAA</div>
+        <div class="stat-label">Audit-Ready Systems &amp; Documentation</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">FAR</div>
+        <div class="stat-label">Parts 15, 31, 52 Expertise</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">GAAP</div>
+        <div class="stat-label">ASC 842 · ASC 470 · Revenue Rec.</div>
+      </div>
+    </div>
+    <a href="#contact" class="btn-primary">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <div class="values-header">
+    <div class="method-label">What We Stand For</div>
+    <h2 class="method-headline" style="font-family: var(--display); font-size: clamp(2rem,3vw,3rem); font-weight:300; color:var(--navy);">Our Commitments</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-item">
+      <div class="value-num">01</div>
+      <h4>Audit-Ready, Always</h4>
+      <p>Every deliverable we produce is built to withstand scrutiny — whether that's a DCAA field audit, an investor review, or a board question. We don't cut corners on documentation or defensibility.</p>
+    </div>
+    <div class="value-item">
+      <div class="value-num">02</div>
+      <h4>True Embedded Partnership</h4>
+      <p>We don't advise from the sidelines. We sit inside your operations, own our deliverables, and show up as a genuine extension of your leadership team — not a vendor with a statement of work.</p>
+    </div>
+    <div class="value-item">
+      <div class="value-num">03</div>
+      <h4>Straight Talk, No Jargon</h4>
+      <p>Complex regulations and accounting standards deserve clear translation, not obscuration. We tell you what the rules mean, what your exposure is, and what to do about it — directly and plainly.</p>
+    </div>
+    <div class="value-item">
+      <div class="value-num">04</div>
+      <h4>Precision Over Speed</h4>
+      <p>In government contracting finance, an error isn't just a correction — it can be a contract finding. We move deliberately, check our work, and deliver accuracy as a non-negotiable baseline.</p>
+    </div>
+    <div class="value-item">
+      <div class="value-num">05</div>
+      <h4>Right-Sized Solutions</h4>
+      <p>There's no one-size-fits-all in fractional finance. We build engagements around your actual stage, complexity, and goals — not a packaged service tier that doesn't quite fit anyone.</p>
+    </div>
+    <div class="value-item">
+      <div class="value-num">06</div>
+      <h4>Long-Term Value Creation</h4>
+      <p>Our goal isn't to be needed indefinitely. We build systems, document processes, and develop your team's capability so that financial maturity becomes a lasting competitive advantage — with or without us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="contact">
+  <div>
+    <h2>Clarity begins<br>with a <em>conversation.</em></h2>
+    <p>Whether you're preparing for a DCAA audit, structuring your indirect rates, or simply need senior financial leadership — let's talk about what's on your plate and how GFP can help.</p>
+  </div>
+  <div class="cta-side">
+    <a href="mailto:bmartinez@gfpaccounting.com" class="btn-primary" style="font-size:0.8rem; padding:18px 40px; display:inline-block;">Book a Discovery Call</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-logo">GROWTH<span style="color:var(--brass);">.</span><br>Financial Partners </span>
+      <p>Fractional CFO and financial advisory services for government contractors and growth-stage companies. Compliance-first. Strategy-led.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#services">Fractional CFO</a>
+      <a href="#services">Govt. Contracting</a>
+      <a href="#services">Financial Close</a>
+      <a href="#services">Payroll & HR</a>
+      <a href="#services">Advisory Projects</a>
+    </div>
+    <div class="footer-col">
+      <h5>Expertise</h5>
+      <a href="#expertise">FAR / DFARS</a>
+      <a href="#expertise">DCAA Compliance</a>
+      <a href="#expertise">ASC 842</a>
+      <a href="#expertise">Indirect Rates</a>
+      <a href="#expertise">ICS Preparation</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#about">About</a>
+      <a href="#values">Our Values</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Growth Finance Partners. All Rights Reserved.</p>
+    <div style="display:flex;gap:24px;">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
