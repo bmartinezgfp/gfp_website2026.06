@@ -1,0 +1,10 @@
+{
+  "name": "gfp-website202606",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-03",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  }
+}
