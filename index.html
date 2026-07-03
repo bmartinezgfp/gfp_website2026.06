@@ -494,6 +494,47 @@
   }
   .cta-side { flex-shrink: 0; }
 
+  .consultation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 320px;
+}
+
+.consultation-form input,
+.consultation-form textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--white);
+}
+
+.consultation-form input::placeholder,
+.consultation-form textarea::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+.consultation-form input:focus,
+.consultation-form textarea:focus {
+  outline: none;
+  border-color: var(--brass);
+  background: rgba(255,255,255,0.08);
+}
+
+.consultation-form textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-status {
+  font-size: 0.8rem;
+  color: var(--brass-lt);
+  margin-top: 4px;
+}
+
   /* ── FOOTER ─────────────────────────────────────────────── */
   footer {
     background: #070E16;
@@ -865,9 +906,50 @@
       Let's talk about your growth and how GFP can help.</p>
   </div>
   <div class="cta-side">
-    <a href="mailto:bmartinez@gfpaccounting.com" class="btn-primary" style="font-size:0.8rem; padding:18px 40px; display:inline-block;">Book a Discovery Call</a>
+    <form id="consultation-form" class="consultation-form">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="company" placeholder="Company Name">
+      <textarea name="message" placeholder="What would you like to discuss?" rows="4"></textarea>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAADvJJRK_oPgjJyge"></div>
+      <button type="submit" class="btn-primary" style="font-size:0.8rem; padding:18px 40px;">Book a Discovery Call</button>
+      <p id="form-status" class="form-status"></p>
+    </form>
   </div>
 </section>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+document.getElementById('consultation-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const statusEl = document.getElementById('form-status');
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  statusEl.textContent = 'Sending...';
+
+  const formData = new FormData(form);
+  const payload = Object.fromEntries(formData.entries());
+
+  try {
+    const res = await fetch('/api/consultation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      form.reset();
+      statusEl.textContent = "Thank you — we'll be in touch shortly.";
+    } else {
+      statusEl.textContent = 'Something went wrong. Please email finance@gfpaccounting.com';
+    }
+  } catch (err) {
+    statusEl.textContent = 'Something went wrong. Please email finance@gfpaccounting.com';
+  } finally {
+    btn.disabled = false;
+  }
+});
+</script>
 
 <!-- FOOTER -->
 <footer>
