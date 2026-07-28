@@ -451,6 +451,11 @@ section[id],div[id]{scroll-margin-top:88px;}
 @media(max-width:900px){
   .nowrap-desktop{white-space:normal;}
 }
+.about-photo {
+  max-width: 300px;   /* adjust to taste */
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* optional, matches a lot of "about" section styling */
 
 /* value prop / feature cards */
 .card{
