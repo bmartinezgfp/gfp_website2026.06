@@ -8,7 +8,7 @@ export async function onRequestPost(context) {
     return new Response(JSON.stringify({ error: 'Invalid request' }), { status: 400 });
   }
 
-  const { name, email, company, message, 'cf-turnstile-response': turnstileToken } = data;
+  const { name, email, phone, interest, company, message, 'cf-turnstile-response': turnstileToken } = data;
 
   if (!name || !email) {
     return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400 });
@@ -38,7 +38,7 @@ export async function onRequestPost(context) {
       to: ['bmartinez@gfpaccounting.com'],
       reply_to: email,
       subject: `New Consultation Request from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || 'N/A'}\n\nMessage:\n${message || 'N/A'}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nInterest: ${interest}\nCompany: ${company || 'N/A'}\n\nMessage:\n${message || 'N/A'}`,
     }),
   });
 
