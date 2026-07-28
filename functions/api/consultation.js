@@ -38,7 +38,7 @@ export async function onRequestPost(context) {
       to: ['bmartinez@gfpaccounting.com'],
       reply_to: email,
       subject: `New Consultation Request from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nInterest: ${interest}\nCompany: ${company || 'N/A'}\n\nMessage:\n${message || 'N/A'}`,
+      text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || 'N/A'}\n\nMessage:\n${message || 'N/A'}`,
     }),
   });
 
