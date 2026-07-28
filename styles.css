@@ -456,6 +456,7 @@ section[id],div[id]{scroll-margin-top:88px;}
   width: 100%;
   height: auto;
   border-radius: 8px; /* optional, matches a lot of "about" section styling */
+}
 
 /* value prop / feature cards */
 .card{
