@@ -451,6 +451,7 @@ section[id],div[id]{scroll-margin-top:88px;}
 @media(max-width:900px){
   .nowrap-desktop{white-space:normal;}
 }
+
 .about-photo {
   max-width: 300px;   /* adjust to taste */
   width: 100%;
