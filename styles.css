@@ -628,6 +628,61 @@ section[id] {
   margin-top: 30px;
 }
 
+.cta-subtext {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, .68);
+  font-size: .78rem;
+}
+
+.firm-credentials {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 72px;
+  padding-top: 0;
+}
+
+.credential {
+  min-width: 0;
+}
+
+.credential-value {
+  color: var(--gold);
+  font-family: var(--display);
+  font-size: clamp(2.35rem, 3.1vw, 3.35rem);
+  font-weight: 500;
+  line-height: .95;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.credential-line {
+  width: 100%;
+  height: 2px;
+  margin-bottom: 18px;
+  background: var(--gold);
+  opacity: .65;
+}
+
+.credential-label strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+
+.credential-label span {
+  display: block;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.55;
+}
+
 .industries {
   background: var(--cream2);
 }
@@ -1051,6 +1106,11 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
+  .firm-credentials {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 48px;
+  }
+
   .industry-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1127,8 +1187,14 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
-  .process-grid,.capability-grid,.industry-grid {
+  .process-grid,.capability-grid,.industry-grid,.firm-credentials {
     grid-template-columns: 1fr;
+  }
+
+  .firm-credentials {
+    gap: 42px;
+    margin-top: 64px;
+    padding-top: 48px;
   }
 
   .government-callout {
